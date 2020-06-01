@@ -2,6 +2,7 @@ using Shop.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using Shop.Data;
 
 [Route("Categorias")]
 public class CategoryController : ControllerBase
@@ -23,17 +24,21 @@ public class CategoryController : ControllerBase
 
     [HttpPost]
     [Route("")]
-    public async Task<ActionResult<Category>> Post ([FromBody]Category model)
+    public async Task<ActionResult<Category>> Post (
+        [FromBody]Category model,
+        [FromServices]DataContext context)
     {
         if(!ModelState.IsValid)
             return BadRequest(ModelState);
             
-        return Ok(model);
+        context.Categories.Add(model);
+        await context.SaveChangesAsync();
+        return model;
     }
 
     [HttpPut]
     [Route("{id:int}")]
-    public async Task<ActionResult<Category>> Put(int id, [FromBody]Category model)
+    public async Task<ActionResult<List<Category>>> Put(int id, [FromBody]Category model)
     {
         if(id != model.Id)
             return NotFound(new {message = "Categoria não encontrada!"});
@@ -46,7 +51,7 @@ public class CategoryController : ControllerBase
 
     [HttpDelete]
     [Route("{id:int}")]
-    public async Task<ActionResult<Category>> Delete(int id)
+    public async Task<ActionResult<List<Category>>> Delete(int id)
     {
         return Ok();;
     }

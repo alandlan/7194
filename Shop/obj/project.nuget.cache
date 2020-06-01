@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "2NqRcgsyjtT/GUfeiu6bOE+957w/0JuoDUHw5e0lxR+FCzMGx35ImNTmVMCudVEFzt21KHxylLkr8qis0mSlGw==",
+  "success": true,
+  "projectFilePath": "/home/alan/Cursos/BaltaIO/7194/Shop/Shop.csproj",
+  "expectedPackageFiles": [
+    "/home/alan/.nuget/packages/microsoft.aspnetcore.app.ref/3.1.2/microsoft.aspnetcore.app.ref.3.1.2.nupkg.sha512"
+  ],
+  "logs": []
+}
